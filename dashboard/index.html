@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord AI Moderation Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.min.js"></script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading" class="loading">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <h3>Se încarcă Dashboard-ul AI...</h3>
+            <p>Inițializare sisteme inteligente</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1><i class="fas fa-robot"></i> Discord AI Moderation</h1>
+            <div class="header-info">
+                <div class="status" id="status">
+                    <div class="status-dot"></div>
+                    <span>Conectat</span>
+                </div>
+                <div class="current-time" id="current-time"></div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hero Stats Section -->
+        <section class="hero-stats">
+            <div class="stats-grid">
+                <div class="stat-card primary">
+                    <div class="stat-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="total-messages">193</h3>
+                        <p>Mesaje Procesate</p>
+                        <div class="stat-trend">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>+12% această săptămână</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card success">
+                    <div class="stat-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="positive-messages">78</h3>
+                        <p>Mesaje Pozitive</p>
+                        <div class="stat-trend">
+                            <i class="fas fa-heart"></i>
+                            <span id="positive-rate">40.41%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card warning">
+                    <div class="stat-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="toxic-messages">48</h3>
+                        <p>Mesaje Toxice</p>
+                        <div class="stat-trend">
+                            <i class="fas fa-arrow-down"></i>
+                            <span id="toxic-rate">24,41%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card info">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="active-users">7</h3>
+                        <p>Utilizatori Activi</p>
+                        <div class="stat-trend">
+                            <i class="fas fa-chart-line"></i>
+                            <span>+14,28% creștere</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Navigation -->
+        <section>
+            <div class="nav-tabs">
+                <div class="nav-tab active" data-tab="overview">
+                    <i class="fas fa-chart-pie"></i> Prezentare Generală
+                </div>
+                <div class="nav-tab" data-tab="users">
+                    <i class="fas fa-users"></i> Gestionare Utilizatori
+                </div>
+                <div class="nav-tab" data-tab="settings">
+                    <i class="fas fa-cog"></i> Setări de Control
+                </div>
+                <div class="nav-tab" data-tab="analytics">
+                    <i class="fas fa-chart-line"></i> Analize Detaliate
+                </div>
+            </div>
+
+            <!-- Overview Tab -->
+            <div id="tab-overview" class="tab-content active">
+                <div class="charts-grid">
+                    <div class="chart-container">
+                        <h3>Activitate în ultimele 7 zile</h3>
+                        <canvas id="activityChart" width="400" height="200"></canvas>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <h3>Distribuția Scorurilor de Risc</h3>
+                        <canvas id="riskChart" width="400" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Users Tab -->
+            <div id="tab-users" class="tab-content">
+                <div class="user-controls">
+                    <input type="text" class="search-box" placeholder="Caută utilizatori..." id="userSearch">
+                    <select class="filter-select" id="riskFilter">
+                        <option value="">Toate Riscurile</option>
+                        <option value="high">Risc Mare</option>
+                        <option value="medium">Risc Mediu</option>
+                        <option value="low">Risc Mic</option>
+                    </select>
+                    <select class="filter-select" id="serverFilter">
+                        <option value="">Toate Serverele</option>
+                        <option value="server1">Gaming Community</option>
+                        <option value="server2">Developer Hub</option>
+                    </select>
+                </div>
+
+                <div id="usersGrid" class="users-grid">
+                    <!-- Se populează dinamic -->
+                </div>
+            </div>
+
+            <!-- Settings Tab -->
+            <div id="tab-settings" class="tab-content">
+                <div class="settings-grid">
+                    <div class="setting-group">
+                        <h3><i class="fas fa-shield-alt"></i> Mod de Operare</h3>
+                        <div class="setting-item">
+                            <label class="setting-label">Selectează modul de moderare</label>
+                            <div class="setting-description">Alege între moderare strictă sau relaxată în funcție de tipul comunității.</div>
+                            <div class="mode-selector">
+                                <div class="mode-option active" data-mode="strict">
+                                    <h4>🔒 Mod Strict</h4>
+                                    <p>Intervenții rapide, toleranță minimă. Ideal pentru comunități profesionale.</p>
+                                </div>
+                                <div class="mode-option" data-mode="relaxed">
+                                    <h4>🤝 Mod Relaxat</h4>
+                                    <p>Intervenții prudente, doar în cazuri clare. Pentru comunități informale.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="setting-group">
+                        <h3><i class="fas fa-sliders-h"></i> Praguri de Detecție</h3>
+                        <div class="setting-item">
+                            <label class="setting-label">Sensibilitate Toxicitate</label>
+                            <div class="setting-description">Ajustează cât de sensibil este AI-ul la detectarea toxicității (0-100%).</div>
+                            <div class="slider-container">
+                                <input type="range" min="0" max="100" value="70" class="slider" id="toxicityThreshold">
+                                <div class="slider-labels">
+                                    <span>Permisiv</span>
+                                    <span id="toxicityValue">70%</span>
+                                    <span>Strict</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <label class="setting-label">Prag Intervenție Automată</label>
+                            <div class="setting-description">Scorul minim pentru acțiuni automate de moderare.</div>
+                            <div class="slider-container">
+                                <input type="range" min="0" max="100" value="85" class="slider" id="autoActionThreshold">
+                                <div class="slider-labels">
+                                    <span>Niciodată</span>
+                                    <span id="autoActionValue">85%</span>
+                                    <span>Întotdeauna</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="setting-group">
+                        <h3><i class="fas fa-cogs"></i> Funcționalități</h3>
+                        <div class="setting-item">
+                            <label class="setting-label">Moderare Automată</label>
+                            <div class="setting-description">Permite AI-ului să ia acțiuni automate (avertismente, timeout-uri).</div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked id="autoModeration">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="setting-item">
+                            <label class="setting-label">Feedback Educațional</label>
+                            <div class="setting-description">Trimite mesaje educaționale personalizate utilizatorilor cu comportament problematic.</div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked id="educationalFeedback">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="setting-item">
+                            <label class="setting-label">Sistem de Recompense</label>
+                            <div class="setting-description">Recompensează comportamentul pozitiv cu puncte și badge-uri.</div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked id="rewardSystem">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="setting-item">
+                            <label class="setting-label">Alerte în Timp Real</label>
+                            <div class="setting-description">Notificări instant pentru moderatori când sunt detectate probleme grave.</div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked id="realTimeAlerts">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="setting-group">
+                        <h3><i class="fas fa-save"></i> Acțiuni</h3>
+                        <div class="setting-item">
+                            <button class="btn-primary" onclick="saveSettings()">
+                                <i class="fas fa-save"></i> Salvează Setările
+                            </button>
+                            <button class="btn-secondary" onclick="resetSettings()">
+                                <i class="fas fa-undo"></i> Resetează la Implicit
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analytics Tab -->
+            <div id="tab-analytics" class="tab-content">
+                <div class="charts-grid">
+                    <div class="chart-container">
+                        <h3>Evoluția Toxicității în Timp</h3>
+                        <canvas id="toxicityTrendChart" width="400" height="200"></canvas>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <h3>Eficacitatea Intervențiilor</h3>
+                        <canvas id="interventionChart" width="400" height="200"></canvas>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <h3>Top Categorii de Infracțiuni</h3>
+                        <canvas id="categoriesChart" width="400" height="200"></canvas>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <h3>Progres Educațional Utilizatori</h3>
+                        <canvas id="progressChart" width="400" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- User Details Modal
+    <div id="userModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalUserName">Detalii Utilizator</h3>
+                <button class="close-btn" onclick="closeUserModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody">
+
+            </div>
+        </div>
+    </div> -->
+
+    <script src="script.js"></script>
+</body>
+</html>

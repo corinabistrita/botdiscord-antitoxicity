@@ -1,0 +1,339 @@
+{
+  "educational_framework": {
+    "version": "1.0.0",
+    "approach": "constructive_intervention",
+    "philosophy": "Growth through education, not punishment"
+  },
+  
+  "ai_settings": {
+    "model_name": "unitary/toxic-bert",
+    "model_type": "xlm_roberta",
+    "fallback_to_patterns": true,
+    "confidence_threshold": 0.7,
+    "multilingual_support": true,
+    "supported_languages": ["ro", "en", "multi"],
+    "bypass_detection": {
+      "enabled": true,
+      "sensitivity": "high",
+      "patterns": {
+        "character_substitution": true,
+        "spacing_bypass": true,
+        "unicode_tricks": true
+      }
+    }
+  },
+
+  "educational_strategies": {
+    "gentle_education": {
+      "description": "Abordare blândă pentru prima interacțiune",
+      "tone": "empathetic",
+      "components": ["explanation", "suggestions", "encouragement"],
+      "follow_up": "24_hours",
+      "success_metrics": ["engagement", "improvement"]
+    },
+    "explanatory_guidance": {
+      "description": "Ghidare detaliată pentru utilizatori cu experiență",
+      "tone": "educational",
+      "components": ["detailed_explanation", "examples", "resources"],
+      "follow_up": "12_hours",
+      "success_metrics": ["comprehension", "behavior_change"]
+    },
+    "clear_boundaries": {
+      "description": "Stabilirea fermă a limitelor pentru comportamente repetate",
+      "tone": "firm",
+      "components": ["consequences", "expectations", "support"],
+      "follow_up": "immediate",
+      "success_metrics": ["compliance", "respect"]
+    },
+    "structured_intervention": {
+      "description": "Intervenție structurată pentru cazuri persistente",
+      "tone": "serious",
+      "components": ["assessment", "plan", "monitoring"],
+      "follow_up": "continuous",
+      "success_metrics": ["transformation", "community_impact"]
+    }
+  },
+
+  "feedback_templates": {
+    "categories": {
+      "profanity": {
+        "severity_levels": {
+          "low": {
+            "explanation": "Limbajul vulgar poate face alții să se simtă inconfortabil și creează bariere în comunicare.",
+            "suggestions": [
+              "Încearcă să îți exprimi emoțiile fără cuvinte vulgare",
+              "Folosește adjective descriptive pentru a fi mai persuasiv",
+              "Fă o pauză de 10 secunde înainte să scrii când ești supărat"
+            ],
+            "positive_examples": [
+              "În loc de înjurături: 'Sunt foarte frustrat de această situație'",
+              "Pentru emphasă: 'Sunt profund dezamăgit' în loc de vocabular vulgar"
+            ]
+          },
+          "high": {
+            "explanation": "Limbajul vulgar intens afectează atmosfera comunității și poate răni relațiile interpersonale.",
+            "suggestions": [
+              "Dezvoltă un vocabular expresiv fără să recurgi la vulgarități",
+              "Practică tehnici de management al furiei înainte de a scrie",
+              "Cere ajutorul comunității pentru a găsi modalități mai bune de exprimare"
+            ],
+            "positive_examples": [
+              "Exprimarea intensă fără vulgarități: 'Sunt extrem de frustrat și dezamăgit'",
+              "Alternativă creativă: 'Această situație mă exasperează profund'"
+            ]
+          }
+        }
+      },
+      "harassment": {
+        "severity_levels": {
+          "low": {
+            "explanation": "Atacurile personale, chiar dacă subtile, rănesc și distrug încrederea în comunitate.",
+            "suggestions": [
+              "Critică ideile, nu persoana: 'Nu sunt de acord cu această idee pentru că...'",
+              "Folosește 'eu cred că...' în loc de 'tu ești...'",
+              "Întreabă-te: 'Cum m-aș simți dacă cineva mi-ar spune asta?'"
+            ],
+            "positive_examples": [
+              "În loc de 'Ești prost': 'Nu înțeleg logica din spatele acestei idei'",
+              "Constructiv: 'Perspectiva mea asupra acestui subiect este diferită'"
+            ]
+          },
+          "high": {
+            "explanation": "Hărțuirea intensă creează un mediu toxic și poate cauza daune psihologice reale.",
+            "suggestions": [
+              "Participă la cursuri de comunicare empatic și rezolvare a conflictelor",
+              "Dezvoltă abilități de autoreflecție și management emoțional",
+              "Caută mentorship pentru îmbunătățirea relațiilor interpersonale"
+            ],
+            "positive_examples": [
+              "Abordare constructivă: 'Să explorăm împreună diferite perspective'",
+              "Empatic: 'Înțeleg că ai o părere diferită. Poți să îmi explici de ce?'"
+            ]
+          }
+        }
+      },
+      "threats": {
+        "severity_levels": {
+          "low": {
+            "explanation": "Chiar și amenințările implicite creează frică și nesiguranță în comunitate.",
+            "suggestions": [
+              "Exprimă-ți frustrarea fără a amenința: 'Sunt foarte deranjat de...'",
+              "Propune soluții în loc să ameninți cu consecințe",
+              "Fă o pauză și respiră adânc înainte să răspunzi"
+            ],
+            "positive_examples": [
+              "În loc de amenințări: 'Această situație mă afectează și sper să găsim o rezolvare'",
+              "Poziție fermă: 'Nu pot accepta acest comportament și îmi doresc să se schimbe'"
+            ]
+          },
+          "high": {
+            "explanation": "Amenințările grave pun în pericol siguranța și bunăstarea membrilor comunității.",
+            "suggestions": [
+              "Învață tehnici de gestionare a furiei prin cursuri specializate",
+              "Dezvoltă strategii de comunicare asertivă fără intimidare",
+              "Consideră consilierea pentru a înțelege și controla impulsurile agresive"
+            ],
+            "positive_examples": [
+              "Exprimarea fermă fără amenințări: 'Acest comportament trebuie să înceteze'",
+              "Soluția constructivă: 'Să găsim o modalitate de a rezolva această problemă'"
+            ]
+          }
+        }
+      },
+      "hate_speech": {
+        "severity_levels": {
+          "low": {
+            "explanation": "Limbajul discriminatoriu perpetuează stereotipuri și exclude membri ai comunității.",
+            "suggestions": [
+              "Învață despre diversitatea din comunitate și beneficiile pe care le aduce",
+              "Înlocuiește generalizările cu observații specifice și individuale",
+              "Întreabă-te de unde vin stereotipurile tale și dacă sunt justificate"
+            ],
+            "positive_examples": [
+              "În loc de generalizări: 'Am avut o experiență diferită cu această persoană'",
+              "Incluziv: 'Apreciez perspectivele diverse din comunitatea noastră'"
+            ]
+          },
+          "high": {
+            "explanation": "Discursul de ură intens dăunează grav coeziunii sociale și poate incita la violență.",
+            "suggestions": [
+              "Participă la programe de educare despre diversitate și incluziune",
+              "Dezvoltă empatie prin interacțiuni directe cu membri din grupuri diverse",
+              "Lucrează cu un consilier pentru a înțelege și schimba atitudinile discriminatorii"
+            ],
+            "positive_examples": [
+              "Incluziv: 'Diversitatea face comunitatea noastră mai puternică'",
+              "Respectuos: 'Respect dreptul fiecăruia de a fi tratat cu demnitate'"
+            ]
+          }
+        }
+      }
+    }
+  },
+
+  "moderation_escalation": {
+    "educational_first": true,
+    "punishment_as_last_resort": true,
+    "steps": [
+      {
+        "warnings": 1,
+        "action": "educational_dm",
+        "duration": 0,
+        "components": ["full_explanation", "examples", "encouragement"],
+        "follow_up": "24_hours"
+      },
+      {
+        "warnings": 2,
+        "action": "enhanced_education",
+        "duration": 0,
+        "components": ["detailed_analysis", "resources", "mentorship_offer"],
+        "follow_up": "12_hours"
+      },
+      {
+        "warnings": 3,
+        "action": "structured_intervention",
+        "duration": 3600,
+        "components": ["timeout_with_materials", "reflection_questions", "community_impact"],
+        "follow_up": "immediate"
+      },
+      {
+        "warnings": 4,
+        "action": "intensive_education",
+        "duration": 86400,
+        "components": ["extended_timeout", "mandatory_resources", "progress_tracking"],
+        "follow_up": "continuous"
+      },
+      {
+        "warnings": 5,
+        "action": "community_intervention",
+        "duration": 604800,
+        "components": ["temporary_ban", "rehabilitation_plan", "community_service"],
+        "follow_up": "weekly"
+      }
+    ]
+  },
+
+  "success_metrics": {
+    "primary_indicators": {
+      "improvement_rate": {
+        "description": "Percentage of users who reduce toxicity after educational intervention",
+        "target": ">70%",
+        "measurement": "30_day_window"
+      },
+      "positive_engagement": {
+        "description": "Percentage of users who respond constructively to feedback",
+        "target": ">65%",
+        "measurement": "immediate_response"
+      },
+      "recidivism_rate": {
+        "description": "Percentage of users who return to toxic behavior",
+        "target": "<15%",
+        "measurement": "90_day_window"
+      },
+      "community_satisfaction": {
+        "description": "Community feedback on atmosphere improvement",
+        "target": ">8.0/10",
+        "measurement": "monthly_survey"
+      }
+    },
+    "secondary_indicators": {
+      "message_quality_improvement": "Average constructiveness of messages after intervention",
+      "peer_mentorship_adoption": "Users who help educate others",
+      "voluntary_self_correction": "Users who self-correct before moderation",
+      "community_growth": "Retention and attraction of positive members"
+    }
+  },
+
+  "resources": {
+    "communication_guides": [
+      {
+        "title": "Comunicarea Asertivă în Mediul Online",
+        "description": "Ghid pentru exprimarea eficientă a opiniilor fără conflict",
+        "language": "ro",
+        "level": "beginner"
+      },
+      {
+        "title": "Conflict Resolution in Digital Communities",
+        "description": "Strategies for managing disagreements constructively",
+        "language": "en",
+        "level": "intermediate"
+      },
+      {
+        "title": "Empathy and Understanding in Online Interactions",
+        "description": "Building better relationships through digital communication",
+        "language": "en",
+        "level": "advanced"
+      }
+    ],
+    "courses": [
+      {
+        "title": "Managementul Emoțiilor în Comunicarea Digitală",
+        "provider": "Educational Platform",
+        "duration": "2 weeks",
+        "language": "ro"
+      },
+      {
+        "title": "Digital Citizenship and Online Ethics",
+        "provider": "Tech Education Institute",
+        "duration": "4 weeks",
+        "language": "en"
+      }
+    ],
+    "support_channels": [
+      {
+        "type": "peer_mentorship",
+        "description": "Experienced community members who help with communication skills"
+      },
+      {
+        "type": "professional_counseling",
+        "description": "Access to trained counselors for anger management and communication"
+      },
+      {
+        "type": "community_workshops",
+        "description": "Regular workshops on healthy communication and conflict resolution"
+      }
+    ]
+  },
+
+  "research_framework": {
+    "data_collection": {
+      "behavioral_metrics": ["message_sentiment", "interaction_patterns", "improvement_trajectory"],
+      "user_feedback": ["satisfaction_surveys", "experience_reports", "suggestion_forms"],
+      "community_health": ["engagement_levels", "retention_rates", "conflict_frequency"]
+    },
+    "analysis_methods": {
+      "quantitative": ["statistical_analysis", "trend_identification", "correlation_studies"],
+      "qualitative": ["thematic_analysis", "case_studies", "ethnographic_observation"]
+    },
+    "ethical_considerations": {
+      "privacy_protection": "All data anonymized and aggregated",
+      "informed_consent": "Users informed about research participation",
+      "beneficial_use": "Research used solely for community improvement"
+    }
+  },
+  "toxic_words": [
+    "prost", "proasta", "idiot", "idiota", "cretin", "imbecil",
+    "urât", "urâtă", "scârbos", "dezgustător",
+    "dracu", "naiba", "mortii", "pizda"
+  ],
+  "positive_patterns": [
+    "mulțumesc", "mulțum", "ms", "mersi", "thanks",
+    "apreciez", "respect", "admir",
+    "colaborăm", "împreună", "ajut",
+    "bun", "minunat", "grozav", "super", "tare", "frumos"
+  ],
+  "educational_responses": {
+    "toxic_detected": "Mesajul tău conține limbaj ofensator. Te rugăm să folosești un limbaj respectuos.",
+    "positive_reinforcement": "Mulțumesc pentru atitudinea pozitivă! Ai primit puncte bonus.",
+    "warning": "Te rugăm să îți moderezi limbajul pentru a menține un mediu prietenos."
+  },
+  "thresholds": {
+    "toxicity": 0.7,
+    "positivity": 0.6
+  },
+  "dual_model_config": {
+    "toxicity_model": "martin-ha/toxic-comment-model",
+    "sentiment_model": "cardiffnlp/twitter-roberta-base-sentiment-latest",
+    "fallback_sentiment_model": "cardiffnlp/twitter-roberta-base-sentiment"
+  }
+}
