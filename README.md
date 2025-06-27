@@ -79,8 +79,33 @@ discord-ai-moderation-bot/
 │   └── script.js
 └── logs/
 ```
+ Livrabile – Conținutul proiectului
 
-## 🛠️ Testare Sistem
+ai_detector.py – Conține logica de analiză AI. Folosește modele pre-antrenate pentru a detecta toxicitatea și sentimentul unui mesaj.
+
+discord_bot.py – Codul principal al botului Discord. Ascultă mesajele, apelează detectorul AI și răspunde cu acțiuni (ex: avertismente).
+
+escalation_system.py – Decide ce sancțiune se aplică (ex: avertisment, timeout, ban) în funcție de istoricul utilizatorului.
+
+rewards_system.py – Detectează comportamentul pozitiv și oferă recompense (puncte, roluri, etc).
+
+api.py – Server FastAPI care oferă API-uri REST. Permite interacțiunea cu dashboard-ul web (statistici, configurare).
+
+dashboard/index.html – Pagina principală a dashboard-ului web, unde administratorii pot vedea și configura botul.
+
+dashboard/style.css – Stilurile vizuale pentru dashboard-ul web.
+
+dashboard/script.js – Scripturile JavaScript care adaugă interactivitate dashboard-ului (ex: grafice, comenzi API).
+
+educational_config.json – Configurații pentru mesaje educaționale (ex: textul avertismentelor, sugestii).
+
+test_system.py – Script de testare a componentelor sistemului (AI, DB, API etc).
+
+run.py – Script principal de pornire a aplicației. Inițializează botul, API-ul și celelalte componente.
+
+requirements.txt – Lista cu toate pachetele Python necesare pentru rularea aplicației (ex: discord.py, transformers etc).
+
+##  Testare Sistem
 
 ### Test complet:
 ```bash
