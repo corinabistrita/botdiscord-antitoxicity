@@ -1,9 +1,9 @@
 
-#  README – Discord AI Moderation Bot
+#  README – Discord AI Moderation Bot - NOXI
 
 ##  Descrierea Livrabilelor
 
-Acest repository conține **întregul cod sursă** pentru un bot Discord inteligent de moderare, construit în scop educațional. Proiectul utilizează modele AI pre-antrenate pentru detectarea toxicității și analiza sentimentului mesajelor din chat. Accentul este pus pe **feedback educațional**, **moderare progresivă**, și **gamificarea comportamentului pozitiv**.
+Acest repository conține **întregul cod sursă** pentru un bot Discord inteligent de moderare, construit în scop educațional. Proiectul utilizează modele AI pre-antrenate pentru detectarea toxicității și analiza sentimentului mesajelor din chat. Accentul este pus pe **feedback educațional**, **moderare progresivă**, și **indentificarea corecta a comportamentului toxic prin modelele pre - atrenate **.
 
 ###  Adresa Git Repository
 > `https://github.com/corinabistrita/botdiscord-antitoxicity`  
@@ -112,16 +112,9 @@ requirements.txt – Lista cu toate pachetele Python necesare pentru rularea apl
 python test_system.py
 ```
 
-### Test rapid AI:
-```bash
-python test_system.py quick
-```
 
-##  Securitate și Logging
 
-- Rate limiting API
-- Logs în directorul `logs/`
-- Audit trail pentru acțiuni administrative
+
 
 
 
